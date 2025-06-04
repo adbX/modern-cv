@@ -20,7 +20,7 @@
       "Developer",
     ),
   ),
-  profile-picture: image("profile.png"),
+  profile-picture: image("assets/images/profile.png"),
   date: datetime.today().display(),
   language: "en",
   colored-headers: true,
