@@ -1,0 +1,19 @@
+name: Render paper.pdf
+on: push
+jobs:
+  render-paper:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: typst-community/setup-typst@v4
+        with:
+          local-packages: packages.json
+      - uses: fontist/setup-fontist@v2
+      - run: fontist install "Roboto"
+      - uses: typst-community/setup-typst@v4
+      - run: typst compile paper.typ paper.pdf --font-path ~/.fontist/fonts
+      - uses: actions/upload-artifact@v4
+        with:
+          name: paper
+          path: paper.pdf
+        
